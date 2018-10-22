@@ -236,7 +236,6 @@ impl ToTokens for StateMachine<phases::ReadyForCodegen> {
             }
 
             #( #state_machine_attrs )*
-            #derive
             #[must_use = "futures do nothing unless polled"]
             #vis struct #state_machine_ident #impl_generics(
                 Option<#states_enum #ty_generics>
