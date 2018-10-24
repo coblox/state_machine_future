@@ -293,6 +293,12 @@ impl ToTokens for StateMachine<phases::ReadyForCodegen> {
                         Some(state.into())
                     )
                 }
+
+                #vis fn new<STATE: Into<#states_enum #ty_generics>>( state: STATE ) -> #state_machine_ident #ty_generics {
+                    #state_machine_ident(
+                        Some(state.into())
+                    )
+                }
             }
 
             #[allow(warnings)]
@@ -328,7 +334,7 @@ impl ToTokens for StateMachine<phases::ReadyForCodegen> {
             #( #state_froms )*
         });
 
-        if cfg!(feature = "debug_code_generation") {
+        if true {
             use std::io::Write;
             use std::process;
 
