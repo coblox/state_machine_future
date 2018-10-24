@@ -288,15 +288,10 @@ impl ToTokens for StateMachine<phases::ReadyForCodegen> {
                     )
                 }
 
-                #vis fn start_in<STATE: Into<#states_enum #ty_generics>>( state: STATE ) -> #state_machine_ident #ty_generics {
+                #vis fn start_in<STATE: Into<#states_enum #ty_generics>>( state: STATE  #context_start_arg_decl ) -> #state_machine_ident #ty_generics {
                     #state_machine_ident(
                         Some(state.into())
-                    )
-                }
-
-                #vis fn new<STATE: Into<#states_enum #ty_generics>>( state: STATE ) -> #state_machine_ident #ty_generics {
-                    #state_machine_ident(
-                        Some(state.into())
+                        #context_start_arg
                     )
                 }
             }
