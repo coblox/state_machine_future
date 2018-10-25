@@ -329,7 +329,7 @@ impl ToTokens for StateMachine<phases::ReadyForCodegen> {
             #( #state_froms )*
         });
 
-        if true {
+        if cfg!(feature = "debug_code_generation") {
             use std::io::Write;
             use std::process;
 
